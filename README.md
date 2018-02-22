@@ -1,3 +1,7 @@
+## Pyber Analysis:
+- The number of drivers increase with the city levels, rural has the least amount of drivers while urban has the most. 
+- According to the bubble chart, the average fares seems to decrease with the city levels, the average fares is rural is generally higher than Urban areas. Perhaps further study of average distances with city levels will help for exploring this trend.
+- Rural area seems to have less drivers than other city levels, it only has around 1% of the total drivers, but it has around 5.2% of total riders. 
 
 
 ```python
@@ -191,7 +195,7 @@ city_data.head()
 
 
 
-
+## Bubble Plot of Ride Sharing Data
 ```python
 rural = city_data[city_data['City Types'] == 'Rural']
 urban = city_data[city_data['City Types'] == 'Urban']
@@ -220,7 +224,7 @@ plt.show()
 
 ![png](Pyber_files/Pyber_3_0.png)
 
-
+## Total Fares by City Type
 
 ```python
 #% of Total Fares by City Type
@@ -238,7 +242,7 @@ plt.show()
 
 ![png](Pyber_files/Pyber_4_0.png)
 
-
+## Total Rides by City Type
 
 ```python
 #% of Total Rides by City Type
@@ -255,6 +259,8 @@ plt.show()
 ![png](Pyber_files/Pyber_5_0.png)
 
 
+
+## Total Drivers by City Type
 
 ```python
 #% of Total Drivers by City Type
