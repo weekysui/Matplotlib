@@ -1,7 +1,3 @@
-## Pyber Analysis:
-- The number of drivers increase with the city levels, rural has the least amount of drivers while urban has the most. 
-- According to the bubble chart, the average fares seems to decrease with the city levels, the average fares is rural is generally higher than Urban areas. Perhaps further study of average distances with city levels will help for exploring this trend.
-- Rural area seems to have less drivers than other city levels, it only has around 1% of the total drivers, but it has around 5.2% of total riders. 
 
 
 ```python
@@ -107,9 +103,9 @@ fare_per_city = city_grouped["fare"].mean()
 #Total Number of Rides Per City
 total_riders = city_grouped["ride_id"].count()
 #Total Number of Drivers Per City
-total_drivers = city_grouped["driver_count"].count()
+total_drivers = city_grouped["driver_count"].mean()
 #City Type (Urban, Suburban, Rural)
-city_type = city_grouped['type'].unique()
+city_type = city_grouped['type'].max()
 city_data = pd.DataFrame({
     "Average Fare ($) Per City": fare_per_city,
     "Total Riders": total_riders ,
@@ -117,6 +113,7 @@ city_data = pd.DataFrame({
     "City Types": city_type
 })
 city_data.head()
+
 ```
 
 
@@ -157,36 +154,36 @@ city_data.head()
     <tr>
       <th>Alvarezhaven</th>
       <td>23.928710</td>
-      <td>[Urban]</td>
-      <td>31</td>
+      <td>Urban</td>
+      <td>21</td>
       <td>31</td>
     </tr>
     <tr>
       <th>Alyssaberg</th>
       <td>20.609615</td>
-      <td>[Urban]</td>
-      <td>26</td>
+      <td>Urban</td>
+      <td>67</td>
       <td>26</td>
     </tr>
     <tr>
       <th>Anitamouth</th>
       <td>37.315556</td>
-      <td>[Suburban]</td>
-      <td>9</td>
+      <td>Suburban</td>
+      <td>16</td>
       <td>9</td>
     </tr>
     <tr>
       <th>Antoniomouth</th>
       <td>23.625000</td>
-      <td>[Urban]</td>
-      <td>22</td>
+      <td>Urban</td>
+      <td>21</td>
       <td>22</td>
     </tr>
     <tr>
       <th>Aprilchester</th>
       <td>21.981579</td>
-      <td>[Urban]</td>
-      <td>19</td>
+      <td>Urban</td>
+      <td>49</td>
       <td>19</td>
     </tr>
   </tbody>
@@ -195,7 +192,7 @@ city_data.head()
 
 
 
-## Bubble Plot of Ride Sharing Data
+
 ```python
 rural = city_data[city_data['City Types'] == 'Rural']
 urban = city_data[city_data['City Types'] == 'Urban']
@@ -213,9 +210,9 @@ plt.ylabel("Average Fares($)")
 plt.suptitle("Pyber Ride Sharing Data",fontsize = 14,fontweight = "bold")
 plt.grid(True,color = 'white')
 text = "Note: circle sizes correlates with driver count per day"
-plt.text(38,30,text,fontsize = 10)
+plt.text(45,30,text,fontsize = 10)
 plt.subplots_adjust()
-plt.xlim(0,36)
+plt.xlim(0,40)
 plt.ylim(15,45)
 plt.rcParams['axes.facecolor'] = 'lightgrey'
 plt.show()
@@ -224,7 +221,7 @@ plt.show()
 
 ![png](Pyber_files/Pyber_3_0.png)
 
-## Total Fares by City Type
+
 
 ```python
 #% of Total Fares by City Type
@@ -242,7 +239,7 @@ plt.show()
 
 ![png](Pyber_files/Pyber_4_0.png)
 
-## Total Rides by City Type
+
 
 ```python
 #% of Total Rides by City Type
@@ -259,8 +256,6 @@ plt.show()
 ![png](Pyber_files/Pyber_5_0.png)
 
 
-
-## Total Drivers by City Type
 
 ```python
 #% of Total Drivers by City Type
